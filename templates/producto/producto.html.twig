@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion-productos{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Gestionar productos</h1>
+{% for message in app.flashes('producto-crear') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('editar-producto') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+
+        <a href="{{ path('crear-producto') }}" class="button button-small">Crear productos</a>
+        <br>
+        <table class="tabla">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+
+            {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.id }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>
+                        <a href="{{ path('editar', {'id':producto.id})}}" class="button button-green">Editar</a>
+                        <a href="{{ path('eliminar', {'id':producto.id})}}" class="button button-red">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+</div>
+{% endblock %}

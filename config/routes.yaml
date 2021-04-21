@@ -1,0 +1,53 @@
+producto:
+   path: /
+   controller: App\Controller\ProductoController::index
+   
+registro:
+   path: /registro
+   controller: App\Controller\UsuarioController::register
+
+login:
+   path: /login
+   controller: App\Controller\UsuarioController::login
+
+logout:
+   path: /logout
+
+categoria:
+   path: /categoria
+   controller: App\Controller\CategoriaController::index
+
+categoria-crear:
+   path: /crear-categoria
+   controller: App\Controller\CategoriaController::crear
+
+ver-categoria:
+   path: /ver-categoria
+   controller: App\Controller\CategoriaController::ver
+
+gestion-producto:
+   path: /gestionar-productos
+   controller: App\Controller\ProductoController::gestion
+
+crear-producto:
+   path: /crear-producto
+   controller: App\Controller\ProductoController::crear
+
+editar:
+   path: /editar-producto/{id}
+   controller: App\Controller\ProductoController::editar
+
+eliminar:
+   path: /eliminar-producto{id}
+   controller: App\Controller\ProductoController::eliminar
+
+comprar:
+   path: /comprar/{id}
+   controller: App\Controller\ProductoController::comprar
+
+pedido:
+   path: /pedido
+   controller: App\Controller\OrderController::index
+
+
+      

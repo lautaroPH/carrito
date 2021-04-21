@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Productos{% endblock %}
+
+{% block body %}
+
+{# <div class="example-wrapper">
+    
+        
+            
+                
+  
+
+            
+ #}
+{# 
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div> #}
+
+
+
+
+    {# table body #}
+
+    {% for article in pagination %}
+        <div id="central">
+       <h1 class="titulo-pro">Productos</h1>
+    <div class="product">
+    
+        {% if loop.index is odd %}{% endif %}
+                       {% for article in pagination %}
+               
+                    
+            <div class="container-pro">
+            <img src="{{ asset('uploads/brochures/'~article.imagen) }}" class="imagen-pro">
+            <h2 class="titulo-nombre">{{ article.nombre }}</h2>
+                    
+                    <p class="numero">Precio: {{ article.precio }}.00$ </p>
+                    <a href="{{ path('comprar', {'id':article.id}) }}" class="button button-comprar">Comprar</a>
+                    </div> 
+                     <br>
+                    <br>
+                
+                   
+                
+                {% endfor %}
+        
+    {% endfor %}
+    </div>
+
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+</div>
+{% endblock %}

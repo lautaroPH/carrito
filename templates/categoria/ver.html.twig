@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ver productos{% endblock %}
+
+{% block body %}
+{% if categorias %}
+<div class="example-wrapper">
+    {% if categoriaTitle.id == id%}
+            <h1 class="titulo-cate">{{categoriaTitle.nombre}}</h1>
+       <h1></h1>
+    <div class="product">
+        
+    {% endif %}
+        {% for producto in productos %}
+            {% if producto.categoria.id == id%}
+                <div class="container-pro">
+                    <img src="{{ asset('uploads/brochures/'~producto.imagen) }}" class="imagen-pro">
+                    <h2 class="titulo-nombre">{{ producto.nombre }}</h2>
+                            
+                            <p class="numero">Precio: {{ producto.precio }}.00$ </p>
+                            <a href="{{ path('comprar', {'id':producto.id}) }}" class="button button-comprar">Comprar</a>
+                            </div> 
+                            <br>
+                            <br>
+                
+
+            {% endif %}
+        {% endfor %}
+        
+</div>
+</div>
+</div>
+{% else %}
+<div class="example-wrapper">
+    <h1>La categoria no existe</h1>
+</div>
+
+{% endif %}
+
+{% endblock %}
+

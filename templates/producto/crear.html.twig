@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% if editar is defined %}
+    Editar Producto
+    {% else %}
+    Crear Producto
+{% endif %}
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>
+    {% if editar is defined %}
+        Editar Producto
+    {% else %}
+        Crear Productoss 
+    {% endif %}
+    </h1>
+
+    <div class="contenedor-form">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {% if editar is defined %}
+             <img src="{{ asset('uploads/brochures/'~productos.imagen) }}" class="imagen">
+        {% endif %}
+        <input type="submit" class="button" value="Guardar">
+        {{ form_end(form) }}
+
+
+       
+    </div>
+</div>
+{% endblock %}

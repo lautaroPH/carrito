@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+
+
+{# {% for producto in productos %}
+    {% if producto.id == id%}
+            <h1 class="titulo-cate">{{producto.nombre}}</h1>
+                    <div class="container-comp">
+                    <img src="{{ asset('uploads/brochures/'~producto.imagen) }}" >
+                        <div class="datos">
+                            <p >{{producto.descripcion}}</p>
+                            <p class="numero-comprar">Precio: {{ producto.precio }}.00$ </p>
+                            <a href="" class="button button-comprar button-carrito">Comprar</a>
+                            </div>
+                    </div>
+
+                
+
+            {% endif %}
+        {% endfor %} #}
+
+
+
+<div class="example-wrapper-comprar">
+{% for producto in productos %}
+{% if producto.id == id%}
+<div class="col-md-8">
+    <h1 class="mt-4 mt-md-0">{{ producto.nombre }}</h1>
+    
+    <hr>
+    <img src="{{ asset('uploads/brochures/'~producto.imagen) }}" class="imagen-comprar">
+
+    {{ form_start(form, {'attr': {'class': 'mt-4 p-4 bg-light'}}) }}
+    <div class="form-group">
+        <p class="descripcion"><b>Descripcion: </b>{{ producto.descripcion }}</p>
+    <h2 class="numero-comprar"><b>Precio: </b>{{ producto.precio }} $</h2>
+        {{ form_label(form.unidades) }}
+        {{ form_widget(form.unidades, {
+            'attr': {
+                'class': 'form-control ' ~ (form.unidades.vars.valid ? '' : 'is-invalid')
+            }
+        }) }}
+        <div class="invalid-feedback">
+            {{ form_errors(form.unidades) }}
+        </div>
+    </div>
+    {{ form_widget(form.add, {'attr': {'class': 'btn btn-warning w-25'}}) }}
+    {{ form_end(form) }}
+</div>
+{% endif %}
+{% endfor %}
+</div>
+{% endblock %}

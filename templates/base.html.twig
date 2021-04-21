@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Sealleasy!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+        <link href="{{ asset('assets/css/estilo33.css') }}" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        {% endblock %}
+        {% block header %}
+        <div class="header-container">
+            <div id="header">
+                <h2 class="titulo">Sealleasy</h2>
+                    <ul id="menu1">
+                    
+                    {% if app.user %}
+                        <li><a href="{{ path('producto') }}">Inicio</a></li>
+                        <li><a href="">{{ app.user.nombre ~ ' ' ~ app.user.apellidos}}</a></li>
+                            {% if app.user.rol == ('ROLE_ADMIN')%}
+                                <li><a href="{{ path('categoria') }}">Gestionar categorias</a></li>
+                                <li><a href="{{ path('gestion-producto') }}">Gestionar productos</a></li>
+                            {% endif %}
+                        <li><a href="{{ path('cart') }}">Mi carrito</a></li>
+                        <li><a href="" class="categorias">Categorias</a>
+                            <ul>
+                                {% for categoria in categorias %}
+                                    <li class="despegable"><a href="{{ path('ver-categoria', {'id':categoria.id}) }}">{{ categoria.nombre }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+
+                        
+                        <li><a href="{{ path('logout') }}">Cerrar sesion</a></li>
+                    {% else %}
+                        <li><a href="{{ path('login') }}">Login</a></li>
+                        <li><a href="{{ path('registro') }}">Registro</a></li>
+                    {% endif %}
+                    </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        {% endblock %}
+
+      
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+       
+        {% endblock %}
+        {% block footer %}
+<div class="clearfix"></div>
+            <div class="footer">
+                <h3>Desarollado por Lautaro Perez Herrera &copy; <?= date('Y') ?></h3>
+            </div>
+        {% endblock %}
+    
+    </body>
+
+</html>

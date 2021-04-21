@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorias{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Gestionar categorias</h1>
+{% for message in app.flashes('categoria') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+        <a href="{{ path('categoria-crear') }}" class="button button-small">Crear Categoria</a>
+        <br>
+        <table class="tabla">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+            </tr>
+
+            {% for categoria in categorias %}
+                <tr>
+                    <td>{{ categoria.id }}</td>
+                    <td>{{ categoria.nombre }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+</div>
+{% endblock %}
